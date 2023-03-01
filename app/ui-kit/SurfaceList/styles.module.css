@@ -1,0 +1,39 @@
+.option {
+  width: 100%;
+  display: block;
+  padding-block: 0;
+  padding-inline: 6px;
+  text-align: start;
+}
+
+.noSeparator .option {
+  padding-block: 0px;
+}
+
+.noSeparator .decoration {
+  padding-block: 8px;
+}
+
+.decoration {
+  border-radius: 6px;
+  padding-inline: 10px;
+  padding-block: 8px;
+}
+
+.option.highlighted .decoration {
+  background-color: var(--neutral-200);
+}
+
+@media (hover: hover) {
+  .option:hover .decoration {
+    background-color: var(--neutral-200);
+  }
+}
+
+.option {
+  outline: none;
+}
+
+.option:focus:focus-visible .decoration {
+  background-color: var(--neutral-200);
+}

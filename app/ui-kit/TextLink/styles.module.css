@@ -1,0 +1,10 @@
+.link {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    text-decoration: underline;
+  }
+}

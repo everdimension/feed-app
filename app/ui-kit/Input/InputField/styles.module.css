@@ -1,0 +1,16 @@
+.input {
+  outline: none;
+}
+
+.fieldset {
+  border: none;
+  background-color: var(--neutral-200);
+  border-radius: 8px;
+  padding-block: 8px;
+  padding-inline: 12px;
+}
+
+.fieldset:focus-within {
+  outline: 1px solid var(--primary);
+  background-color: var(--white);
+}

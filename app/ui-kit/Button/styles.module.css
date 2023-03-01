@@ -1,0 +1,59 @@
+.button {
+  cursor: pointer;
+}
+
+.asButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: currentColor;
+}
+
+.primary {
+  background-color: var(--actions-default);
+  color: var(--always-white);
+}
+
+.primary:disabled {
+  cursor: default;
+  background-color: var(--actions-disabled);
+  color: var(--actions-on-disabled);
+}
+
+.primary:focus-visible {
+  outline: 2px solid var(--actions-default);
+  outline-offset: 2px;
+}
+
+.regular:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 2px;
+}
+
+.ghost {
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.ghost:disabled {
+  cursor: default;
+}
+
+@media (hover: hover) {
+  .ghost:not(:disabled):hover {
+    background-color: var(--neutral-300);
+  }
+}
+
+.danger {
+  background-color: var(--negative-500);
+  color: var(--always-white);
+}
+
+.danger:disabled {
+  cursor: default;
+  background-color: var(--negative-300);
+}
+
