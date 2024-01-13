@@ -1,11 +1,10 @@
 {
   "private": true,
   "sideEffects": false,
+  "type": "module",
   "scripts": {
     "build": "remix build",
-    "dev": "npm-run-all build --parallel \"dev:*\"",
-    "dev:node": "cross-env NODE_ENV=development nodemon --require dotenv/config ./server.js --watch ./server.js",
-    "dev:remix": "remix watch",
+    "dev": "remix dev --command 'node ./server.js'",
     "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc",
     "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,md}\"",
