@@ -1,4 +1,4 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node';
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -7,30 +7,30 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
-} from '@remix-run/react';
-import { cssBundleHref } from '@remix-run/css-bundle';
-import mainStylesheet from './styles/main.css';
-import themeDarkStylesheet from './styles/theme-dark.css';
-import { isTruthy } from 'is-truthy-ts';
-import { PageColumn } from './components/PageColumn';
-import { PageTop } from './components/PageTop';
-import { UIText } from './ui-kit/UIText';
+} from "@remix-run/react";
+import { cssBundleHref } from "@remix-run/css-bundle";
+import mainStylesheet from "./styles/main.css";
+import themeDarkStylesheet from "./styles/theme-dark.css";
+import { isTruthy } from "is-truthy-ts";
+import { PageColumn } from "./components/PageColumn";
+import { PageTop } from "./components/PageTop";
+import { UIText } from "./ui-kit/UIText";
 
 export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  title: 'New Remix App',
-  viewport: 'width=device-width,initial-scale=1',
+  charset: "utf-8",
+  title: "New Remix App",
+  viewport: "width=device-width,initial-scale=1",
 });
 
 export const links: LinksFunction = () =>
   [
-    { rel: 'stylesheet', href: mainStylesheet },
+    { rel: "stylesheet", href: mainStylesheet },
     {
-      rel: 'stylesheet',
+      rel: "stylesheet",
       href: themeDarkStylesheet,
-      media: '(prefers-color-scheme: dark)',
+      media: "(prefers-color-scheme: dark)",
     },
-    cssBundleHref ? { rel: 'stylesheet', href: cssBundleHref } : null,
+    cssBundleHref ? { rel: "stylesheet", href: cssBundleHref } : null,
   ].filter(isTruthy);
 
 export function CatchBoundary() {
@@ -50,7 +50,7 @@ export function CatchBoundary() {
       <body>
         <PageColumn>
           <PageTop />
-          <UIText kind="headline/h1" as="h1" style={{ paddingBlock: '2rem' }}>
+          <UIText kind="headline/h1" as="h1" style={{ paddingBlock: "2rem" }}>
             {caught.status} {caught.statusText}
           </UIText>
         </PageColumn>

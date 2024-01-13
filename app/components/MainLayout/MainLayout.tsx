@@ -7,7 +7,7 @@ export function MainLayout({
   user,
   users,
   children,
-}: React.PropsWithChildren<{ user: User | null, users: ClientUser[] }>) {
+}: React.PropsWithChildren<{ user: User | null; users: ClientUser[] }>) {
   return (
     <HStack
       gap={0}
@@ -18,7 +18,7 @@ export function MainLayout({
       }}
     >
       <div style={{ marginTop: 102 }}>
-        <Sidebar user={user} users={users}/>
+        <Sidebar user={user} users={users} />
       </div>
       {children}
     </HStack>

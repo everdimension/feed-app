@@ -1,8 +1,8 @@
-import { HStack } from 'structure-kit';
-import type { User } from '~/modules/auth/types.server';
-import { TextLink } from '~/ui-kit/TextLink';
-import { PageTitle } from '../PageTitle';
-import { PageTop } from '../PageTop';
+import { HStack } from "structure-kit";
+import type { User } from "~/modules/auth/types.server";
+import { TextLink } from "~/ui-kit/TextLink";
+import { PageTitle } from "../PageTitle";
+import { PageTop } from "../PageTop";
 
 export function Header({
   title,

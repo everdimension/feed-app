@@ -17,7 +17,7 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function Index() {
   const { user, users } = useLoaderData() as Awaited<ReturnType<typeof loader>>;
-  console.log({ user })
+  console.log({ user });
   return (
     <MainLayout user={user} users={users}>
       <PageColumn>

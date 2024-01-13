@@ -1,15 +1,15 @@
-import type { User } from '@prisma/client';
-import bcrypt from 'bcryptjs';
-import { prisma } from '../database/prisma.server';
-import type { RegisterForm } from './types.server';
+import type { User } from "@prisma/client";
+import bcrypt from "bcryptjs";
+import { prisma } from "../database/prisma.server";
+import type { RegisterForm } from "./types.server";
 
 export function validateUser(
-  data: Partial<RegisterForm>
+  data: Partial<RegisterForm>,
 ): data is RegisterForm {
   return (
-    typeof data.email === 'string' &&
-    typeof data.password === 'string' &&
-    typeof data.username === 'string'
+    typeof data.email === "string" &&
+    typeof data.password === "string" &&
+    typeof data.username === "string"
   );
 }
 
@@ -56,7 +56,7 @@ export async function isCorrectPassword(password: string, user: User) {
 export async function getOtherUsers(userId: string | null) {
   return prisma.user.findMany({
     where: userId ? { id: { not: userId } } : undefined,
-    orderBy: { profile: { username: 'asc' } },
+    orderBy: { profile: { username: "asc" } },
     select: { id: true, profile: true },
   });
 }

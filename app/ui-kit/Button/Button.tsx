@@ -1,25 +1,25 @@
-import React from 'react';
+import React from "react";
 import type {
   ComponentPropsWithoutRef,
   ComponentPropsWithRef,
   ElementType,
-} from 'react';
-import cx from 'classnames';
-import { UIText } from '../UIText';
-import styles from './styles.module.css';
+} from "react";
+import cx from "classnames";
+import { UIText } from "../UIText";
+import styles from "./styles.module.css";
 
-type Kind = 'primary' | 'regular' | 'ghost' | 'danger';
+type Kind = "primary" | "regular" | "ghost" | "danger";
 type Size = 60 | 56 | 46 | 44 | 40 | 36 | 32 | 28;
 
 const kinds: { [kind in Kind]: (size: number) => React.CSSProperties } = {
   primary: () => ({}),
   danger: () => ({}),
   regular: () => ({
-    background: 'transparent',
-    color: 'var(--black)',
-    border: '1px solid var(--neutral-400)',
+    background: "transparent",
+    color: "var(--black)",
+    border: "1px solid var(--neutral-400)",
   }),
-  ghost: size => {
+  ghost: (size) => {
     const padding = size <= 44 ? 4 : 8;
     return { paddingLeft: padding, paddingRight: padding };
   },
@@ -30,24 +30,24 @@ interface Props {
   size?: Size;
 }
 
-const ButtonElement = <As extends ElementType = 'button'>(
+const ButtonElement = <As extends ElementType = "button">(
   {
     style,
     as,
-    kind = 'primary',
+    kind = "primary",
     size = 44,
     children,
     className,
     ...props
   }: Props & { as?: As } & ComponentPropsWithoutRef<As> & {
-      ref?: ComponentPropsWithRef<As>['ref'];
+      ref?: ComponentPropsWithRef<As>["ref"];
     },
-  ref: React.Ref<ComponentPropsWithRef<As>['ref']>
+  ref: React.Ref<ComponentPropsWithRef<As>["ref"]>,
 ) => {
-  const isButton = as == null || as === 'button';
+  const isButton = as == null || as === "button";
   return (
     <UIText
-      as={as || 'button'}
+      as={as || "button"}
       ref={ref}
       kind="body/accent"
       className={cx(className, styles[kind], styles.button, {
@@ -55,8 +55,8 @@ const ButtonElement = <As extends ElementType = 'button'>(
       })}
       style={Object.assign(
         {
-          border: 'none',
-          textDecoration: 'none',
+          border: "none",
+          textDecoration: "none",
           paddingLeft: 48,
           paddingRight: 48,
           borderRadius: 8,
@@ -64,7 +64,7 @@ const ButtonElement = <As extends ElementType = 'button'>(
           color: undefined,
         },
         kinds[kind](size),
-        style
+        style,
       )}
       {...props}
     >

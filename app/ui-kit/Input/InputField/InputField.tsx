@@ -1,6 +1,6 @@
-import { useId } from 'react';
-import { VStack } from 'structure-kit';
-import styles from './styles.module.css';
+import { useId } from "react";
+import { VStack } from "structure-kit";
+import styles from "./styles.module.css";
 
 export function InputField({
   label,
@@ -16,7 +16,7 @@ export function InputField({
       <VStack gap={4}>
         {label ? (
           <label
-            style={{ fontSize: 12, color: 'var(--neutral-700)' }}
+            style={{ fontSize: 12, color: "var(--neutral-700)" }}
             htmlFor={id}
           >
             {label}
@@ -28,8 +28,8 @@ export function InputField({
           type="text"
           name={name}
           style={{
-            backgroundColor: 'transparent',
-            border: 'none',
+            backgroundColor: "transparent",
+            border: "none",
           }}
           {...props}
         />

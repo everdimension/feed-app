@@ -7,18 +7,17 @@ export async function createReaction({
   authorId,
   recipientId,
 }: {
-    message: string,
-    style: ReactionStyle
-    authorId: string,
-    recipientId: string,
-  }) {
+  message: string;
+  style: ReactionStyle;
+  authorId: string;
+  recipientId: string;
+}) {
   prisma.reaction.create({
     data: {
       message,
       style,
       author: { connect: { id: authorId } },
-      recipient: { connect: { id: recipientId }}
-    }
-  })
-
+      recipient: { connect: { id: recipientId } },
+    },
+  });
 }

@@ -77,7 +77,7 @@ export async function action({ request }: ActionArgs) {
 
 const colors = ["WHITE", "RED", "GREEN", "YELLOW", "BLUE"];
 const emojis = ["HEAVY_PLUS", "PARTY", "GOAT"] as const;
-const emojiMap: Record<typeof emojis[number], { emoji: string }> = {
+const emojiMap: Record<(typeof emojis)[number], { emoji: string }> = {
   GOAT: { emoji: "🐐" },
   PARTY: { emoji: "🥳" },
   HEAVY_PLUS: { emoji: "➕" },

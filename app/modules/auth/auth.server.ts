@@ -22,7 +22,7 @@ export async function register(data: RegisterForm) {
   if (!user) {
     return json(
       { error: "User was not created and this is unexpected" },
-      { status: 500 }
+      { status: 500 },
     );
   }
   return { id: user.id, email: user.email };
@@ -67,7 +67,7 @@ export async function createUserSession({
 
 export async function requireAuth({ request }: { request: Request }) {
   const session = await sessionStorage.getSession(
-    request.headers.get("Cookie")
+    request.headers.get("Cookie"),
   );
   const userId = session.get("userId");
   if (!userId || typeof userId !== "string") {
@@ -80,7 +80,7 @@ export async function requireAuth({ request }: { request: Request }) {
 
 export async function logout({ request }: { request: Request }) {
   const session = await sessionStorage.getSession(
-    request.headers.get("Cookie")
+    request.headers.get("Cookie"),
   );
   return redirect("/login", {
     headers: {
@@ -91,7 +91,7 @@ export async function logout({ request }: { request: Request }) {
 
 export async function getUserFromSession({ request }: { request: Request }) {
   const session = await sessionStorage.getSession(
-    request.headers.get("Cookie")
+    request.headers.get("Cookie"),
   );
   const userId = session.get("userId") as string | undefined;
   if (!userId) {

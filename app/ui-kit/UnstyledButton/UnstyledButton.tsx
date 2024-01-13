@@ -1,6 +1,6 @@
-import React from 'react';
-import cx from 'classnames';
-import styles from './UnstyledButton.module.css';
+import React from "react";
+import cx from "classnames";
+import styles from "./UnstyledButton.module.css";
 
 export const UnstyledButton = React.forwardRef<
   HTMLButtonElement,

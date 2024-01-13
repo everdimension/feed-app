@@ -1,1 +1,1 @@
-export { PageColumn } from './PageColumn';
+export { PageColumn } from "./PageColumn";
