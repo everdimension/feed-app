@@ -40,12 +40,12 @@ export async function findUser(user: { email: string }) {
 export async function findUserById(user: { id: string }) {
   return prisma.user.findUnique({
     where: { id: user.id },
-    select: {
-      id: true,
-      createdAt: true,
-      email: true,
-      profile: true,
-    },
+    // select: {
+    //   id: true,
+    //   createdAt: true,
+    //   email: true,
+    //   profile: true,
+    // },
   });
 }
 

@@ -63,6 +63,10 @@
     inset 0px 1px 0px rgba(255, 255, 255, 0.08);
 }
 
+body {
+  background-color: var(--z-index-0);
+}
+
 :root :global(.theme-dark-invert) {
   filter: invert(100%) hue-rotate(180deg) contrast(90%);
 }

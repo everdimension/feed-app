@@ -8,5 +8,6 @@ module.exports = {
   // publicPath: "/build/",
   future: {
     unstable_cssModules: true,
+    v2_routeConvention: true,
   },
 };

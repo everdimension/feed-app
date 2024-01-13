@@ -1,12 +1,11 @@
-import type { LoaderArgs } from '@remix-run/node';
-import { useLoaderData } from 'react-router';
-import { HStack, Spacer } from 'structure-kit';
-import { PageColumn } from '~/components/PageColumn';
-import { PageTitle } from '~/components/PageTitle';
-import { PageTop } from '~/components/PageTop';
-import { getUserFromSession, requireAuth } from '~/modules/auth/auth.server';
-import { SurfaceList } from '~/ui-kit/SurfaceList';
-import { UIText } from '~/ui-kit/UIText';
+import type { LoaderArgs } from "@remix-run/node";
+import { useLoaderData } from "react-router";
+import { HStack, Spacer } from "structure-kit";
+import { Header } from "~/components/Header";
+import { PageColumn } from "~/components/PageColumn";
+import { getUserFromSession, requireAuth } from "~/modules/auth/auth.server";
+import { SurfaceList } from "~/ui-kit/SurfaceList";
+import { UIText } from "~/ui-kit/UIText";
 
 export async function loader({ request }: LoaderArgs) {
   await requireAuth({ request });
@@ -23,8 +22,7 @@ export default function Profile() {
   }
   return (
     <PageColumn>
-      <PageTop />
-      <PageTitle>Profile</PageTitle>
+      <Header title="Profile" user={user} />
       <Spacer height={32} />
       <SurfaceList
         items={[

@@ -7,6 +7,7 @@ import { UnstyledAnchor } from '../UnstyledAnchor';
 import { UnstyledButton } from '../UnstyledButton';
 import { UnstyledLink } from '../UnstyledLink';
 import s from './styles.module.css';
+import { Link } from '@remix-run/react';
 
 export function ItemLink({
   to,
@@ -21,6 +22,7 @@ export function ItemLink({
 }) {
   return (
     <UnstyledLink
+      prefetch="intent"
       style={{ color: 'inherit', ...style }}
       to={to}
       onClick={onClick}
