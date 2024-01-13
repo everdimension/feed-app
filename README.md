@@ -1,6 +1,8 @@
-# Welcome to Remix!
+# Fullstack Remix, Prisma, MongoDB App
 
-- [Remix Docs](https://remix.run/docs)
+- [Prisma Blogpost](https://www.prisma.io/blog/fullstack-remix-prisma-mongodb-1-7D0BfTXBmB6r)
+
+---
 
 ## Development
 
