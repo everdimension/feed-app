@@ -1,7 +1,7 @@
 import type { LoaderArgs } from "@remix-run/node";
 import { Outlet, useLoaderData } from "react-router";
 import { MainLayout } from "~/components/MainLayout";
-import { getUserFromSession, requireAuth } from "~/modules/auth/auth.server";
+import { getUserFromSession } from "~/modules/auth/auth.server";
 import { getOtherUsers } from "~/modules/auth/user.server";
 
 export async function loader({ request }: LoaderArgs) {

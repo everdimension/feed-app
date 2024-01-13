@@ -1,4 +1,4 @@
-import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import { Spacer, VStack } from "structure-kit";
 import { PageColumn } from "~/components/PageColumn";
@@ -22,6 +22,8 @@ function getNextDestination(request: Request) {
   const next = new URLSearchParams(new URL(request.url).search).get("next");
   return next || "/";
 }
+
+export const meta: V2_MetaFunction = () => [{ title: "Login" }];
 
 export const action = async ({ request }: ActionArgs) => {
   const formData = await request.formData();

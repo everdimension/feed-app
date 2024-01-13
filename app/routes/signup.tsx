@@ -1,5 +1,5 @@
 import { Spacer, VStack } from "structure-kit";
-import type { ActionArgs } from "@remix-run/node";
+import type { ActionArgs, V2_MetaFunction } from "@remix-run/node";
 import { PageColumn } from "~/components/PageColumn";
 import { PageTitle } from "~/components/PageTitle";
 import { PageTop } from "~/components/PageTop";
@@ -10,6 +10,8 @@ import { UnstyledLink } from "~/ui-kit/UnstyledLink";
 import styles from "~/ui-kit/UIText/helpers.module.css";
 import { createUserSession, register } from "~/modules/auth/auth.server";
 import { isResponse } from "~/shared/isResponse";
+
+export const meta: V2_MetaFunction = () => [{ title: "Signup" }];
 
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();

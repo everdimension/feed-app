@@ -1,12 +1,13 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 import {
+  isRouteErrorResponse,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  useCatch,
+  useRouteError,
 } from "@remix-run/react";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import mainStylesheet from "./styles/main.css";
@@ -15,12 +16,6 @@ import { isTruthy } from "is-truthy-ts";
 import { PageColumn } from "./components/PageColumn";
 import { PageTop } from "./components/PageTop";
 import { UIText } from "./ui-kit/UIText";
-
-export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "New Remix App",
-  viewport: "width=device-width,initial-scale=1",
-});
 
 export const links: LinksFunction = () =>
   [
@@ -33,8 +28,10 @@ export const links: LinksFunction = () =>
     cssBundleHref ? { rel: "stylesheet", href: cssBundleHref } : null,
   ].filter(isTruthy);
 
-export function CatchBoundary() {
-  const caught = useCatch();
+function DocumentLayout({
+  title,
+  children,
+}: React.PropsWithChildren<{ title: string }>) {
   return (
     <html lang="en">
       <head>
@@ -43,26 +40,53 @@ export function CatchBoundary() {
           name="viewport"
           content="width=device-width,initial-scale=1,viewport-fit=cover"
         />
-        <title>{caught.statusText}</title>
+        <Meta />
+        <title>{title}</title>
 
         <Links />
       </head>
-      <body>
+      <body>{children}</body>
+    </html>
+  );
+}
+
+export function ErrorBoundary() {
+  // const caught = useCatch();
+  const error = useRouteError();
+  if (isRouteErrorResponse(error)) {
+    return (
+      <DocumentLayout title={error.statusText}>
         <PageColumn>
           <PageTop />
           <UIText kind="headline/h1" as="h1" style={{ paddingBlock: "2rem" }}>
-            {caught.status} {caught.statusText}
+            {error.status} {error.statusText}
           </UIText>
         </PageColumn>
-      </body>
-    </html>
-  );
+      </DocumentLayout>
+    );
+  } else {
+    return (
+      <DocumentLayout title="Unknown Error">
+        <PageColumn>
+          <PageTop />
+          <UIText kind="headline/h1" as="h1" style={{ paddingBlock: "2rem" }}>
+            {error instanceof Error ? error.message : "Unknown Error"}
+          </UIText>
+        </PageColumn>
+      </DocumentLayout>
+    );
+  }
 }
 
 export default function App() {
   return (
     <html lang="en">
       <head>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,viewport-fit=cover"
+        />
         <Meta />
         <Links />
       </head>

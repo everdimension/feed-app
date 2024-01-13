@@ -1,4 +1,4 @@
-import type { LoaderArgs } from "@remix-run/node";
+import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "react-router";
 import { HStack, Spacer } from "structure-kit";
 import { Header } from "~/components/Header";
@@ -6,6 +6,8 @@ import { PageColumn } from "~/components/PageColumn";
 import { getUserFromSession, requireAuth } from "~/modules/auth/auth.server";
 import { SurfaceList } from "~/ui-kit/SurfaceList";
 import { UIText } from "~/ui-kit/UIText";
+
+export const meta: V2_MetaFunction = () => [{ title: "Main / Profile" }];
 
 export async function loader({ request }: LoaderArgs) {
   await requireAuth({ request });

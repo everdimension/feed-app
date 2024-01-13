@@ -1,8 +1,7 @@
 import type { Color, Emoji } from "@prisma/client";
 import { Prisma } from "@prisma/client";
-import type { ActionArgs, LoaderArgs } from "@remix-run/node";
-import { redirect } from "@remix-run/node";
-import { json } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs, V2_MetaFunction } from "@remix-run/node";
+import { redirect, json } from "@remix-run/node";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 import { useEffect, useRef } from "react";
 import { HStack, Spacer, VStack } from "structure-kit";
@@ -12,6 +11,8 @@ import { createReaction } from "~/modules/reaction/reaction.server";
 import { Button } from "~/ui-kit/Button";
 import { InputField } from "~/ui-kit/Input/InputField";
 import { UnstyledButton } from "~/ui-kit/UnstyledButton";
+
+export const meta: V2_MetaFunction = () => [{ title: "Reaction Route" }];
 
 export async function loader({ request, params }: LoaderArgs) {
   await requireAuth({ request });
